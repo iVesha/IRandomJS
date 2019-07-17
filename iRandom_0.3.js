@@ -41,7 +41,7 @@ function iRandom_characters(length) {
 }
 
 /*  Generate random numbers in lenght you decide  */
-function iRandom_characters(length) {
+function iRandom_numbers(length) {
    var result = '';
    var characters = '0123456789';
    var charactersLength = characters.length;
@@ -53,7 +53,7 @@ function iRandom_characters(length) {
 }
 
 /*  Generate random uppercase letters , in lenght you decide  */
-function iRandom_characters(length) {
+function iRandom_alpha_upper(length) {
    var result = '';
    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    var charactersLength = characters.length;
@@ -64,7 +64,7 @@ function iRandom_characters(length) {
 }
 
 /*  Generate random lowercase letters , in lenght you decide  */
-function iRandom_characters(length) {
+function iRandom_alpha_lower(length) {
    var result = '';
    var characters = 'abcdefghijklmnopqrstuvwxyz';
    var charactersLength = characters.length;
@@ -76,7 +76,7 @@ function iRandom_characters(length) {
 
 
 /*  Generate random letters , in lenght you decide  */
-function iRandom_characters(length) {
+function iRandom_alpha(length) {
    var result = '';
    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
    var charactersLength = characters.length;
