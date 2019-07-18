@@ -1,62 +1,100 @@
+/*   MIN/MAX INCLUDE/EXCLUDE   */
+
+
 /* Generates random number in range between min and max , both included */
-function iRandom_range(min, max) {//M_M
-  i_return = Math.floor(Math.random() * (max - min + 1) ) + min;
+function iRandom_range_MM(min, max) {
+  return MM = Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 /* Generates random number in range between min and max , min is included , and max is excluded */
-function iRandom_range_ME(min, max) {//M_m
-  i_return = Math.floor(Math.random() * (max - min) ) + min;
+function iRandom_range_Mm(min, max) {
+  return Mm = Math.floor(Math.random() * (max - min) ) + min;
 }
 
 /* Generates random number in range between min and max , both min and max is excluded */
-function iRandom_range_mE(min, max) {//m_m
-    i_return = Math.floor(Math.random() * (max-min) + min);
-    if (i_return == min) i_return++;
-    return i_return;
+function iRandom_range_mm(min, max) {
+    mm = Math.floor(Math.random() * (max-min) + min);
+    if (mm == min) mm++;
+    return mm;
 }
 
 /* Generates random number in range between min and max , min is excluded , and max is included */
-function iRandom_range(min, max) {//m_M
-  i_return = Math.floor(Math.random() * (max - min + 1) ) + min;
-  if (i_return == min) i_return++;
-  return i_return;
+function iRandom_range_mM(min, max) {
+  mM = Math.floor(Math.random() * (max - min + 1) ) + min;
+  if (mM == min) mM++;
+  return mM;
 }
 
 
-function iRandom_randomExcluded(min, max, excluded) {//WIP_STATE
-    var n = Math.floor(Math.random() * (max-min) + min);
-    if (n >= excluded) n++;
-    return n;
+
+
+
+/*   MIN/MAX INCLUDE/EXCLUDE , SKIP   */
+
+
+/* Generates random number in range between min and max , both min and max is included , and third parameter is skipped */
+function iRandom_range_MMs(min, max, skipMMs) {
+    MMs = Math.floor(Math.random() * (max - min + 1) ) + min;
+    if (MMs >= skipMMs) MMs++;
+    return MMs;
 }
 
-/*  Generate random characters in length you decide  */
-function iRandom_characters(length) {
-   var result = '';
-   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
+/* Generates random number in range between min and max , min is included , max is excluded , and third parameter is skipped */
+function iRandom_range_Mms(min, max, skipMms) {
+	Mms = Math.floor(Math.random() * (max - min) ) + min;
+	if (MMs >= skipMMs) MMs++;
+    return MMs;	
+}
+
+/* Generates random number in range between min and max , both min and max is excluded , and third parameter is skipped */
+function iRandom_range_mms(min, max, skipmms) {
+    mms = Math.floor(Math.random() * (max-min) + min);
+    if (mms == min) mms++;
+    if (mms >= skipmms) mms++;
+	return mms;
+}
+
+/* Generates random number in range between min and max , min is excluded , and max is included , and third parameter is skipped */
+function iRandom_range_mMs(min, max, skipmMs) {
+  mMs = Math.floor(Math.random() * (max - min + 1) ) + min;
+  if (mMs == min) mMs++;
+  if (mMs == skipmMs) mMs++;
+  return mMs;
+}
+
+
+
+
+
+/*   _?_   */
+
+/* Generate random characters in length you decide */
+function iRandom_charactersAll(length) {
+   let result = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   let charactersLength = characters.length;
+   for ( let i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
    return result;
 }
 
 /*  Generate random numbers in lenght you decide  */
-function iRandom_characters(length) {
-   var result = '';
-   var characters = '0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
+function iRandom_charactersNums(length) {
+   let result = '';
+   let characters = '0123456789';
+   let charactersLength = characters.length;
+   for ( let i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
-   parseInt(result);
    return result;
 }
 
 /*  Generate random uppercase letters , in lenght you decide  */
-function iRandom_characters(length) {
-   var result = '';
-   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-   var charactersLength = characters.length;
+function iRandom_charactersUletters(length) {
+   let result = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   let charactersLength = characters.length;
    for ( var i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
@@ -64,10 +102,10 @@ function iRandom_characters(length) {
 }
 
 /*  Generate random lowercase letters , in lenght you decide  */
-function iRandom_characters(length) {
-   var result = '';
-   var characters = 'abcdefghijklmnopqrstuvwxyz';
-   var charactersLength = characters.length;
+function iRandom_charactersLletters(length) {
+   let result = '';
+   let characters = 'abcdefghijklmnopqrstuvwxyz';
+   let charactersLength = characters.length;
    for ( var i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
@@ -76,10 +114,10 @@ function iRandom_characters(length) {
 
 
 /*  Generate random letters , in lenght you decide  */
-function iRandom_characters(length) {
-   var result = '';
-   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-   var charactersLength = characters.length;
+function iRandom_charactersULletters(length) {
+   let result = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+   let charactersLength = characters.length;
    for ( var i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
