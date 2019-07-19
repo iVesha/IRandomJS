@@ -1,29 +1,89 @@
-/*   MIN/MAX INCLUDE/EXCLUDE   */
+/* RANDOM NUMBERS IN DECIDED RANGE */
+function randomRange(min, max) {
 
-
-/* Generates random number in range between min and max , both included */
-function iRandom_range_MM(min, max) {
-  return MM = Math.floor(Math.random() * (max - min + 1) ) + min;
+if (min.length === 2 && max.length === 2) {
+	if (min[0] === "include" && max[0] === "include") {
+		rrangeIi = Math.floor(Math.random() * (max[1] - min[1] + 1) ) + min[1];
+		return rrangeIi;
+	}
+	else if (min[0] === "include" && max[0] === "exclude") {
+		rrangeIe = Math.floor(Math.random() * (max[1] - min[1]) ) + min[1];
+		return rrangeIe;
+	}
+	else if (min[0] === "exclude" && max[0] === "include") {
+		rrangeEi = Math.floor(Math.random() * (max[1] - min[1] + 1) ) + min[1];
+		if (rrangeEi == min[1]) rrangeEi++;
+		return rrangeEi;
+	}
+	else {/*   min[0] === "exclude" && max[0] === "exclude"   */
+		rrangeEe = Math.floor(Math.random() * (max[1]-min[1]) + min[1]);
+		if (rrangeEe == min[1]) rrangeEe++;
+		return rrangeEe;
+	}
+}
+/*else {
+	console.log("[\"include\" / \"exclude\", num(eg. 4)], [\"include\" / \"exclude\", num(eg. 27)]");
+}*/
 }
 
-/* Generates random number in range between min and max , min is included , and max is excluded */
-function iRandom_range_Mm(min, max) {
-  return Mm = Math.floor(Math.random() * (max - min) ) + min;
+/* RANDOM RANGE FOR MIN RANGE - CAN USE IN randomRange FUNCTION */
+function minRange(min1, min2) {
+
+if (min1.length === 2 && min2.length === 2) {
+	if (min1[0] === "include" && min2[0] === "include") {
+		mrangeIi = Math.floor(Math.random() * (min2[1] - min1[1] + 1) ) + min1[1];
+		return mrangeIi;
+	}
+	else if (min1[0] === "include" && min2[0] === "exclude") {
+		mrangeIe = Math.floor(Math.random() * (min2[1] - min1[1]) ) + min1[1];
+		return mrangeIe;
+	}
+	else if (min1[0] === "exclude" && min2[0] === "include") {
+		mrangeEi = Math.floor(Math.random() * (min2[1] - min1[1] + 1) ) + min1[1];
+		if (mrangeEi == min1[1]) mrangeEi++;
+		return mrangeEi;
+	}
+	else {/*   min1[0] === "exclude" && min2[0] === "exclude"   */
+		mrangeEe = Math.floor(Math.random() * (min2[1]-min1[1]) + min1[1]);
+		if (mrangeEe == min1[1]) mrangeEe++;
+		return mrangeEe;
+	}
+}
 }
 
-/* Generates random number in range between min and max , both min and max is excluded */
-function iRandom_range_mm(min, max) {
-    mm = Math.floor(Math.random() * (max-min) + min);
-    if (mm == min) mm++;
-    return mm;
+/* RANDOM RANGE FOR MAX RANGE - CAN USE IN randomRange FUNCTION */
+function maxRange(max1, max2) {
+
+if (max1.length === 2 && max2.length === 2) {
+	if (max1[0] === "include" && max2[0] === "include") {
+		MrangeIi = Math.floor(Math.random() * (max2[1] - max1[1] + 1) ) + max1[1];
+		return MrangeIi;
+	}
+	else if (max1[0] === "include" && max2[0] === "exclude") {
+		MrangeIe = Math.floor(Math.random() * (max2[1] - max1[1]) ) + max1[1];
+		return MrangeIe;
+	}
+	else if (max1[0] === "exclude" && max2[0] === "include") {
+		MrangeEi = Math.floor(Math.random() * (max2[1] - max1[1] + 1) ) + max1[1];
+		if (MrangeEi == max1[1]) MrangeEi++;
+		return MrangeEi;
+	}
+	else {/*   max1[0] === "exclude" && max2[0] === "exclude"   */
+		MrangeEe = Math.floor(Math.random() * (max2[1]-max1[1]) + max1[1]);
+		if (MrangeEe == max1[1]) MrangeEe++;
+		return MrangeEe;
+	}
+}
 }
 
-/* Generates random number in range between min and max , min is excluded , and max is included */
-function iRandom_range_mM(min, max) {
-  mM = Math.floor(Math.random() * (max - min + 1) ) + min;
-  if (mM == min) mM++;
-  return mM;
-}
+/* execute function 100 times
+for (var i=0; i<100; i++) {
+			console.log(
+			randomRange(["include", minRange(["include", 10], ["exclude", 15])], ["include", maxRange(["exclude", 30], ["exclude", 50])]))
+			;
+		}   */
+		
+/* __--__--__--__ */
 
 
 
