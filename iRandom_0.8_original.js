@@ -15,6 +15,22 @@ function iRandom_randomFloat_FromRange(rFFR_min, rFFR_max) {
 
 
 
+/*  GENERATE FROM DECIDED RANGE  */
+
+//all ints
+function IntRange(IR_min, IR_max){
+var i_arr = [];
+for (let i = IR_min; i <= IR_max; i++) {
+     i_arr.push(i);
+}
+return i_arr;
+}
+
+//all floats
+
+
+
+
 /*  PERCENTRAGE <-> NUMBER  */
 
 //get gercentrage of decided number
@@ -27,6 +43,12 @@ function percentOfNum(pON_num, pON_max){
 function numOfPercent(nOP_percent, nOP_max) { 
 	var myNum = (nOP_percent / 100) * nOP_max;
 	return myNum;
+}
+
+//get max number when is only known number and it's percent
+function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
+	var maxNumOfNP = mNoPN_num / (mNoPN_percent / 100);
+	return maxNumOfNP;
 }
 
 
@@ -58,16 +80,6 @@ function DateNumber() {
 	let finall = Number(semifinal);
 	return finall;
 }
-
-
-
-/*  [WIP]  */   /*
-function iRandom_range_skip(min, max, skip) {
-    let rrange = Math.floor(Math.random() * (max - min + 1) ) + min;
-    if (rrange == skip) rrange++;
-    return rrange;
-}
-*/
 
 
 
@@ -317,3 +329,17 @@ function combinations(set) {
 	}
 	return combs;
 }
+
+
+
+/*  STRING TO NUMBER  */
+function String2Num(myString) {
+    let elo = "";
+    myString = myString.split("").reverse().join("")
+    for (let i = 1; i <= myString.length; i++) {
+        elo += myString.charCodeAt(myString.length - i)
+    }
+    
+    return elo;
+}
+
