@@ -262,38 +262,50 @@ function String2Num(myString, level) {
 
 
 
-/* FIBONACCI NUMBERS */
+/* FIBONACCI SEQUENCE & NUMBERS */
 
 //returns an array of first n Fibonacci numbers
-function fibonacci_series(n) {
+function fibonacciSeq(n) {
   if (n===1) {
     return [0, 1];
 	} 
   else {
-    let s = fibonacci_series(n - 1);
+    let s = fibonacciSeq(n - 1);
     s.push(s[s.length - 1] + s[s.length - 2]);
     return s;
 }}
 
 //returns one Fibonacci number
-function fibonacci(num) {
-  if (num <= 1) return 1;
-  return fibonacci(num - 1) + fibonacci(num - 2);
+function fibonacciNum(num) {
+	if (num <= 0) return 0;
+	if (num <= 1 && num <= 2) return 1;
+	return fibonacci(num - 1) + fibonacci(num - 2);
 }
 
 
 
+/* ARITHMETIC SEQUENCE & NUMBERS */
+
+//returns one number from arithmetic sequence
+function ariNum(n, a, d) {
+	return /*a[n] =*/ a + d * (n-1);
+}
 
 
 
+/* GEOMETRIC SEQUENCE & NUMBERS */
+
+//returns one number from geometric sequence
+function geoNum(n, a, r) {
+	return /*a[n] =*/ a * r *(n-1);
+}
 
 
 
+/* TRIANGULAR SEQUENCE & NUMBERS */
 
-
-
-
-
-
-
+//returns one number from triangular sequence
+function triNum(n) {
+	return /*x[n]=*/n*(n+1)/2;
+}
 
