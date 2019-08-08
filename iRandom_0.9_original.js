@@ -155,7 +155,7 @@ function iRandom_random_rgba() {//red green blue alpha
 }
 
 //random rgb color
-function iRandom_random_rgba() {//red green blue
+function iRandom_random_rgb() {//red green blue
     let o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
 }
@@ -226,7 +226,7 @@ function combinations_k(set, k) {
 	combs = [];
 	for (i = 0; i < set.length - k + 1; i++) {
 		head = set.slice(i, i + 1);
-		tailcombs = k_combinations(set.slice(i + 1), k - 1);
+		tailcombs = combinations_k(set.slice(i + 1), k - 1);
 		for (j = 0; j < tailcombs.length; j++) {
 			combs.push(head.concat(tailcombs[j]));
 		}
@@ -259,4 +259,41 @@ function String2Num(myString, level) {
     
     return elo;
 }
+
+
+
+/* FIBONACCI NUMBERS */
+
+//returns an array of first n Fibonacci numbers
+function fibonacci_series(n) {
+  if (n===1) {
+    return [0, 1];
+	} 
+  else {
+    let s = fibonacci_series(n - 1);
+    s.push(s[s.length - 1] + s[s.length - 2]);
+    return s;
+}}
+
+//returns one Fibonacci number
+function fibonacci(num) {
+  if (num <= 1) return 1;
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
