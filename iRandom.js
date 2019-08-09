@@ -366,3 +366,38 @@ function seriesSum(n) {
     return sum;
 }
 
+
+
+
+
+
+function squareNum(n) {
+	return Math.pow(n, 2);
+}
+
+function cubeNum(n) {
+	return Math.pow(n, 3);
+}
+
+function squareSeq(n) {
+	let seq = [2];
+	for (let i =1; i<=n-1; i++) {
+		seq.push(Math.pow(seq.length+1, 2));
+	}
+	return seq;
+}
+
+function cubeSeq(n) {
+	let seq = [2];
+	for (let i =1; i<=n-1; i++) {
+		seq.push(Math.pow(seq.length+1, 3));
+	}
+	return seq;
+}
+
+
+
+
+/* TO-DO :  MAKE ALL SEQUENCES INTO ONE FUNCTION  */
+
+
