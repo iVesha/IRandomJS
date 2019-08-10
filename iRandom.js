@@ -402,7 +402,7 @@ function cubeSeq(n) {
 
 
 /* GET REQUEST */
-function iGet(url, callback) {
+function iGet(iURL, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -416,13 +416,35 @@ function iGet(url, callback) {
             callback(iData);
         }
     };
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("GET", iURL, true);
     xmlhttp.send();
 }
+/*   EXAMPLE   */
 /*
 iGet('url/to/your/json/file.json', function(iData) {
     document.getElementById("title").innerHTML = iData["title"];
 });
 */
+
+
+/*  POST REQUEST  */
+function iPost(iURL, callback, ReqHead, iSend) {
+    var xmlhttp = new XMLHttpRequest();
+	xmlhttp.setRequestHeader(ReqHead)
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log('responseText:' + xmlhttp.responseText);
+            try {
+                var iData = JSON.parse(xmlhttp.responseText);
+            } catch(err) {
+                console.log(err.message + " in " + xmlhttp.responseText);
+                return;
+            }
+            callback(iData);
+        }
+    };
+    xmlhttp.open("POST", iURL, true);
+    xmlhttp.send(iSend);
+}
 
 
