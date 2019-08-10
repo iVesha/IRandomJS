@@ -397,7 +397,32 @@ function cubeSeq(n) {
 
 
 
-
 /* TO-DO :  MAKE ALL SEQUENCES INTO ONE FUNCTION  */
+
+
+
+/* GET REQUEST */
+function iGet(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log('responseText:' + xmlhttp.responseText);
+            try {
+                var iData = JSON.parse(xmlhttp.responseText);
+            } catch(err) {
+                console.log(err.message + " in " + xmlhttp.responseText);
+                return;
+            }
+            callback(iData);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+/*
+iGet('url/to/your/json/file.json', function(iData) {
+    document.getElementById("title").innerHTML = iData["title"];
+});
+*/
 
 
