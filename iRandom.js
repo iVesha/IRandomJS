@@ -1,13 +1,13 @@
 /*  ONE RANDOM THING IN DECIDED RANGE  */
 
 //get one random Int from decided range
-function iRandom_randomInt_FromRange(rIFR_min, rIFR_max) {
+export function iRandom_randomInt_FromRange(rIFR_min, rIFR_max) {
     var randomInt = Math.floor(Math.random() * (rIFR_max - rIFR_min + 1)) + rIFR_min;
     return randomInt;
 }
 
 //get one random float from decided range
-function iRandom_randomFloat_FromRange(rFFR_min, rFFR_max) {
+export function iRandom_randomFloat_FromRange(rFFR_min, rFFR_max) {
     var randomFloat = (Math.random() * (rFFR_max - rFFR_min + 1)) + rFFR_min;
     return randomFloat;
 }
@@ -17,7 +17,7 @@ function iRandom_randomFloat_FromRange(rFFR_min, rFFR_max) {
 /*  GENERATE FROM DECIDED RANGE  */
 
 //all ints
-function IntRange(IR_min, IR_max) {
+export function IntRange(IR_min, IR_max) {
     var i_arr = [];
     for (let i = IR_min; i <= IR_max; i++) {
         i_arr.push(i);
@@ -30,19 +30,19 @@ function IntRange(IR_min, IR_max) {
 /*  PERCENTRAGE <-> NUMBER  */
 
 //get gercentrage of decided number
-function percentOfNum(pON_num, pON_max) {
+export function percentOfNum(pON_num, pON_max) {
     var myPercent = (pON_num / pON_max) * 100;
     return myPercent + '%';
 }
 
 //get number of decided percentrage
-function numOfPercent(nOP_percent, nOP_max) {
+export function numOfPercent(nOP_percent, nOP_max) {
     var myNum = (nOP_percent / 100) * nOP_max;
     return myNum;
 }
 
 //get max number when is only known number and it's percent
-function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
+export function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
     var maxNumOfNP = mNoPN_num / (mNoPN_percent / 100);
     return maxNumOfNP;
 }
@@ -52,7 +52,7 @@ function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
 /*  DATE  */
 
 //date num
-function DateNumber() {
+export function DateNumber() {
     let today = new Date();
     let year = today.getFullYear();
     let month = today.getMonth() + 1;
@@ -82,7 +82,7 @@ function DateNumber() {
 /*  RANDOM  UPPERCASE AND LOWERCASE LETTERS and NUMBERS IN LENGHT YOU DECIDE  */
 
 //generate random characters , in length you decide
-function iRandom_charactersAll(cA_length) {
+export function iRandom_charactersAll(cA_length) {
     let result = '';
     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let charactersLength = characters.length;
@@ -93,7 +93,7 @@ function iRandom_charactersAll(cA_length) {
 }
 
 //generate random numbers , in lenght you decide
-function iRandom_charactersNums(cN_length) {
+export function iRandom_charactersNums(cN_length) {
     let result = '';
     let characters = '0123456789';
     let charactersLength = characters.length;
@@ -104,7 +104,7 @@ function iRandom_charactersNums(cN_length) {
 }
 
 //generate random uppercase letters , in lenght you decide
-function iRandom_charactersUletters(cUl_length) {
+export function iRandom_charactersUletters(cUl_length) {
     let result = '';
     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let charactersLength = characters.length;
@@ -115,7 +115,7 @@ function iRandom_charactersUletters(cUl_length) {
 }
 
 //generate random lowercase letters , in lenght you decide
-function iRandom_charactersLletters(cLl_length) {
+export function iRandom_charactersLletters(cLl_length) {
     let result = '';
     let characters = 'abcdefghijklmnopqrstuvwxyz';
     let charactersLength = characters.length;
@@ -127,7 +127,7 @@ function iRandom_charactersLletters(cLl_length) {
 
 
 //generate random uppercase and lowercase letters , in lenght you decide
-function iRandom_charactersULletters(cULl_length) {
+export function iRandom_charactersULletters(cULl_length) {
     let result = '';
     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     let charactersLength = characters.length;
@@ -142,13 +142,13 @@ function iRandom_charactersULletters(cULl_length) {
 /*  COLORS  */
 
 //random hex color
-function iRandom_random_hex() {
+export function iRandom_random_hex() {
     let hexVal = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     return hexVal;
 }
 
 //random rgba color
-function iRandom_random_rgba() { //red green blue alpha
+export function iRandom_random_rgba() { //red green blue alpha
     let o = Math.round,
         r = Math.random,
         s = 255;
@@ -156,7 +156,7 @@ function iRandom_random_rgba() { //red green blue alpha
 }
 
 //random rgb color
-function iRandom_random_rgb() { //red green blue
+export function iRandom_random_rgb() { //red green blue
     let o = Math.round,
         r = Math.random,
         s = 255;
@@ -164,7 +164,7 @@ function iRandom_random_rgb() { //red green blue
 }
 
 //random hsl color
-function iRandom_random_hsl() { //hue, saturnation, lightness
+export function iRandom_random_hsl() { //hue, saturnation, lightness
     let rRound = Math.round,
         rRandom = Math.random,
         myhue = 360,
@@ -174,7 +174,7 @@ function iRandom_random_hsl() { //hue, saturnation, lightness
 }
 
 //random hwb color
-function iRandom_hwb() { //hue , whiteness, blackness   //CSS4
+export function iRandom_hwb() { //hue , whiteness, blackness   //CSS4
     let rRound = Math.round,
         rRandom = Math.random,
         myhue = 360,
@@ -184,7 +184,7 @@ function iRandom_hwb() { //hue , whiteness, blackness   //CSS4
 }
 
 //random cmyk color
-function iRandom_cmyk() { //cyan, magenta, yellow, black   //CSS4
+export function iRandom_cmyk() { //cyan, magenta, yellow, black   //CSS4
     var rRound = Math.round,
         rRandom = Math.random,
         mycyan = 100,
@@ -199,7 +199,7 @@ function iRandom_cmyk() { //cyan, magenta, yellow, black   //CSS4
 }
 
 //random cmy color //CSS4
-function iRandom_cmy() {
+export function iRandom_cmy() {
     var rRound = Math.round,
         rRandom = Math.random,
         mycyan = 100,
@@ -214,7 +214,7 @@ function iRandom_cmy() {
 
 
 /*  GENERATE RANDOM LETTER FROM DECIDED STRING  */
-function iRandom_choice(myVariable) {
+export function iRandom_choice(myVariable) {
     let length = 1;
     let myLength = myVariable.length;
     for (let i = 0; i < length; i++) {
@@ -228,7 +228,7 @@ function iRandom_choice(myVariable) {
 // NUMBER COMBINATIONS
 
 //generate combinations with k numbers
-function combinations_k(set, k) {
+export function combinations_k(set, k) {
     var i, j, combs, head, tailcombs;
     if (k > set.length || k <= 0) {
         return [];
@@ -255,7 +255,7 @@ function combinations_k(set, k) {
 }
 
 //generate combinations with all possible numbers 
-function combinations(set) {
+export function combinations(set) {
     var k, i, combs, k_combs;
     combs = [];
     for (k = 1; k <= set.length; k++) {
@@ -270,7 +270,7 @@ function combinations(set) {
 
 
 /*  STRING TO NUMBER  */
-function String2Num(myString, level) {
+export function String2Num(myString, level) {
     let elo = "";
     myString = myString.split("").reverse().join("")
     for (let i = 1; i <= myString.length; i++) {
@@ -285,7 +285,7 @@ function String2Num(myString, level) {
 /* FIBONACCI SEQUENCE & NUMBERS */
 
 //returns an array of first n Fibonacci numbers
-function fibonacciSeq(n) {
+export function fibonacciSeq(n) {
     if (n === 1) {
         return [0, 1];
     } else {
@@ -296,7 +296,7 @@ function fibonacciSeq(n) {
 }
 
 //returns one Fibonacci number
-function fibonacciNum(num) {
+export function fibonacciNum(num) {
     if (num <= 0) return 0;
     if (num <= 1 && num <= 2) return 1;
     return fibonacci(num - 1) + fibonacci(num - 2);
@@ -307,12 +307,12 @@ function fibonacciNum(num) {
 /* ARITHMETIC SEQUENCE & NUMBERS */
 
 //returns one number from arithmetic sequence
-function ariNum(n, a, d) {
+export function ariNum(n, a, d) {
     return /*a[n] =*/ a + d * (n - 1);
 }
 
 //returns arithmetic sequence
-function ariSeq(n, a, d) {
+export function ariSeq(n, a, d) {
     let seq = [a, a + d];
     for (let i = 3; i <= n; i++) {
         seq.push(seq[seq.length - 1] + d);
@@ -325,12 +325,12 @@ function ariSeq(n, a, d) {
 /* GEOMETRIC SEQUENCE & NUMBERS */
 
 //returns one number from geometric sequence
-function geoNum(n, a, r) {
+export function geoNum(n, a, r) {
     return /*a[n] =*/ a * Math.pow(r, (n - 1));
 }
 
 //returns geometric sequence
-function geoSeq(n, a, r) {
+export function geoSeq(n, a, r) {
     let seq = [a, a * r];
     for (let i = 3; i <= n; i++) {
         seq.push(seq[seq.length - 1] * r);
@@ -343,12 +343,12 @@ function geoSeq(n, a, r) {
 /* TRIANGULAR SEQUENCE & NUMBERS */
 
 //returns one number from triangular sequence
-function triNum(n) {
+export function triNum(n) {
     return /*x[n]=*/ n * (n + 1) / 2;
 }
 
 //returns triangular sequence
-function triSeq(n) {
+export function triSeq(n) {
     let seq = [1, 3];
     for (let i = 3; i <= n; i++) {
         seq.push(i * (i + 1) / 2);;
@@ -359,7 +359,7 @@ function triSeq(n) {
 
 
 /* SUM SERIES */
-function seriesSum(n) {
+export function seriesSum(n) {
     var sum = 0;
     for (let i = 1; i <= n; i++)
         sum += i * (i + 1) / 2;
@@ -371,15 +371,15 @@ function seriesSum(n) {
 
 
 
-function squareNum(n) {
+export function squareNum(n) {
 	return Math.pow(n, 2);
 }
 
-function cubeNum(n) {
+export function cubeNum(n) {
 	return Math.pow(n, 3);
 }
 
-function squareSeq(n) {
+export function squareSeq(n) {
 	let seq = [2];
 	for (let i =1; i<=n-1; i++) {
 		seq.push(Math.pow(seq.length+1, 2));
@@ -387,7 +387,7 @@ function squareSeq(n) {
 	return seq;
 }
 
-function cubeSeq(n) {
+export function cubeSeq(n) {
 	let seq = [2];
 	for (let i =1; i<=n-1; i++) {
 		seq.push(Math.pow(seq.length+1, 3));
@@ -402,7 +402,7 @@ function cubeSeq(n) {
 
 
 /* GET REQUEST */
-function iGet(iURL, callback) {
+export function iGet(iURL, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -428,7 +428,7 @@ iGet('url/to/your/json/file.json', function(iData) {
 
 
 /*  POST REQUEST  */
-function iPost(iURL, callback, ReqHead, iSend) {
+export function iPost(iURL, callback, ReqHead, iSend) {
     var xmlhttp = new XMLHttpRequest();
 	xmlhttp.setRequestHeader(ReqHead)
     xmlhttp.onreadystatechange = function() {
@@ -448,3 +448,4 @@ function iPost(iURL, callback, ReqHead, iSend) {
 }
 
 
+//example with post request - will come later
