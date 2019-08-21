@@ -47,6 +47,64 @@ export function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
     return maxNumOfNP;
 }
 
+export let percent, maxNum, num, num1, num2;
+//percent of max number --> number
+export function percentOfMaxNum (percent, maxNum) {
+	percent = parseInt(percent, 10);
+	num = (percent/100) * 	maxNum;
+	return num;
+}
+//number is percent --> max number
+export function numIsPercent (num, percent) {
+	percent = parseInt(percent, 10);
+	maxNum = num / (percent/100);
+	return maxNum;
+}
+
+export function num1PlusPercent (num1, percent) {
+	percent = parseInt(percent, 10);
+	num2 = ((percent/100) * num1) + num1;
+	return num2;
+}
+
+export function num1LessPercent (num1, percent) {
+	percent = parseInt(percent, 10);
+	num2 = num1 - ((percent/100) *num1);
+	return num2;
+}
+
+export function num1AfterReduction (num1, percent) {
+	percent = parseInt(percent, 10);
+	num2 = num1 / ((100-percent)/100);
+	return num2;
+}
+
+export function num1AfterIncrease (num1, percent) {
+	percent = parseInt(percent, 10);
+	num2 = num1 / ((100+percent)/100);
+	return num2;
+}
+
+export function fraction (num1, num2) {
+	if(num1 < num2) {
+	percent = ((num1/num2)*100) + "%";
+	}
+	if(num1 > num2) {
+		percent = ((num1/num2)*100) + "%";
+	}
+	return percent;
+}
+
+export function fromNum1ToNum2 (num1, num2) {
+	if (num1 < num2) {
+		percent = (((num2/num1)*100)-100) + "%";
+	}
+	if (num1 > num2) {
+		percent = (100-((num2/num1)*100)) + "%";
+	}
+	return percent;
+}
+
 
 
 /*  DATE  */
@@ -209,6 +267,86 @@ export function iRandom_cmy() {
     let magentaShort = rRound(rRandom() * mymagenta) + '%';
     let yellowShort = rRound(rRandom() * myyellow) + '%';
     return 'cmy(' + cyanShort + ', ' + magentaShort + ', ' + yellowShort + ')';
+}
+
+
+
+/* COLOR CONVERTING */
+
+//rgb to hex
+function RGBToHex(r,g,b) {
+  r = r.toString(16);
+  g = g.toString(16);
+  b = b.toString(16);
+
+  if (r.length == 1)
+    r = "0" + r;
+  if (g.length == 1)
+    g = "0" + g;
+  if (b.length == 1)
+    b = "0" + b;
+
+  return "#" + r + g + b;
+}
+
+//rgba to hexa
+function RGBAToHexA(r,g,b,a) {
+  r = r.toString(16);
+  g = g.toString(16);
+  b = b.toString(16);
+  a = Math.round(a * 255).toString(16);
+
+  if (r.length == 1)
+    r = "0" + r;
+  if (g.length == 1)
+    g = "0" + g;
+  if (b.length == 1)
+    b = "0" + b;
+  if (a.length == 1)
+    a = "0" + a;
+
+  return "#" + r + g + b + a;
+}
+
+//hex to rgb
+function hexToRGB(h) {
+  let r = 0, g = 0, b = 0;
+
+  // 3 digits
+  if (h.length == 4) {
+    r = "0x" + h[1] + h[1];
+    g = "0x" + h[2] + h[2];
+    b = "0x" + h[3] + h[3];
+
+  // 6 digits
+  } else if (h.length == 7) {
+    r = "0x" + h[1] + h[2];
+    g = "0x" + h[3] + h[4];
+    b = "0x" + h[5] + h[6];
+  }
+  
+  return "rgb("+ +r + "," + +g + "," + +b + ")";
+}
+
+//hexa to rgba
+function hexAToRGBA(h) {
+  let r = 0, g = 0, b = 0, a = 1;
+
+  if (h.length == 5) {
+    r = "0x" + h[1] + h[1];
+    g = "0x" + h[2] + h[2];
+    b = "0x" + h[3] + h[3];
+    a = "0x" + h[4] + h[4];
+
+  } else if (h.length == 9) {
+    r = "0x" + h[1] + h[2];
+    g = "0x" + h[3] + h[4];
+    b = "0x" + h[5] + h[6];
+    a = "0x" + h[7] + h[8];
+  }
+  a = +(a / 255).toFixed(3);
+
+  return "rgba(" + +r + "," + +g + "," + +b + "," + a + ")";
 }
 
 
@@ -449,3 +587,27 @@ export function iPost(iURL, callback, ReqHead, iSend) {
 
 
 //example with post request - will come later
+
+
+/* WORKING WITH FILES */
+
+//make list of files
+function fromDir(startPath,filter){
+    var path = require('path'), fs=require('fs');
+    if (!fs.existsSync(startPath)){
+        console.log("no dir ",startPath);
+        return;
+    }
+    var files=fs.readdirSync(startPath);
+    for(var i=0;i<files.length;i++){
+        var filename=path.join(startPath,files[i]);
+        var stat = fs.lstatSync(filename);
+        if (stat.isDirectory()){
+            fromDir(filename,filter); //recurse
+        }
+        else if (filename.indexOf(filter)>=0) {
+            console.log(filename);
+        };
+    };
+}
+//  fromDir('C:\\Riot Games\\League of Legends\\Game\\DATA\\FINAL\\Champions\\','.en_US.wad.client');
