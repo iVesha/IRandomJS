@@ -1,613 +1,469 @@
-/*  ONE RANDOM THING IN DECIDED RANGE  */
-
-//get one random Int from decided range
-export function iRandom_randomInt_FromRange(rIFR_min, rIFR_max) {
-    var randomInt = Math.floor(Math.random() * (rIFR_max - rIFR_min + 1)) + rIFR_min;
-    return randomInt;
-}
-
-//get one random float from decided range
-export function iRandom_randomFloat_FromRange(rFFR_min, rFFR_max) {
-    var randomFloat = (Math.random() * (rFFR_max - rFFR_min + 1)) + rFFR_min;
-    return randomFloat;
-}
-
-
-
-/*  GENERATE FROM DECIDED RANGE  */
-
-//all ints
-export function IntRange(IR_min, IR_max) {
-    var i_arr = [];
-    for (let i = IR_min; i <= IR_max; i++) {
-        i_arr.push(i);
+const iRandom = {
+  range: {
+    intRange: (min, max) => {
+      var randomInt = Math.floor(Math.random() * (max - min + 1)) + min
+      return randomInt
+    },
+    floatRange: (min, max) => {
+      var randomFloat = (Math.random() * (max - min + 1)) + min
+      return randomFloat
     }
-    return i_arr;
-}
+  },
 
-
-
-/*  PERCENTRAGE <-> NUMBER  */
-
-//get gercentrage of decided number
-export function percentOfNum(pON_num, pON_max) {
-    var myPercent = (pON_num / pON_max) * 100;
-    return myPercent + '%';
-}
-
-//get number of decided percentrage
-export function numOfPercent(nOP_percent, nOP_max) {
-    var myNum = (nOP_percent / 100) * nOP_max;
-    return myNum;
-}
-
-//get max number when is only known number and it's percent
-export function maxNumofPercentNum(mNoPN_num, mNoPN_percent) {
-    var maxNumOfNP = mNoPN_num / (mNoPN_percent / 100);
-    return maxNumOfNP;
-}
-
-export let percent, maxNum, num, num1, num2;
-//percent of max number --> number
-export function percentOfMaxNum (percent, maxNum) {
-	percent = parseInt(percent, 10);
-	num = (percent/100) * 	maxNum;
-	return num;
-}
-//number is percent --> max number
-export function numIsPercent (num, percent) {
-	percent = parseInt(percent, 10);
-	maxNum = num / (percent/100);
-	return maxNum;
-}
-
-export function num1PlusPercent (num1, percent) {
-	percent = parseInt(percent, 10);
-	num2 = ((percent/100) * num1) + num1;
-	return num2;
-}
-
-export function num1LessPercent (num1, percent) {
-	percent = parseInt(percent, 10);
-	num2 = num1 - ((percent/100) *num1);
-	return num2;
-}
-
-export function num1AfterReduction (num1, percent) {
-	percent = parseInt(percent, 10);
-	num2 = num1 / ((100-percent)/100);
-	return num2;
-}
-
-export function num1AfterIncrease (num1, percent) {
-	percent = parseInt(percent, 10);
-	num2 = num1 / ((100+percent)/100);
-	return num2;
-}
-
-export function fraction (num1, num2) {
-	if(num1 < num2) {
-	percent = ((num1/num2)*100) + "%";
-	}
-	if(num1 > num2) {
-		percent = ((num1/num2)*100) + "%";
-	}
-	return percent;
-}
-
-export function fromNum1ToNum2 (num1, num2) {
-	if (num1 < num2) {
-		percent = (((num2/num1)*100)-100) + "%";
-	}
-	if (num1 > num2) {
-		percent = (100-((num2/num1)*100)) + "%";
-	}
-	return percent;
-}
-
-
-
-/*  DATE  */
-
-//date num
-export function DateNumber() {
-    let today = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    if (month < 10) month = '0' + month;
-    let day = today.getDate();
-    if (day < 10) day = '0' + day;
-    let hour = today.getHours();
-    if (hour < 10) hour = '0' + hour;
-    let minute = today.getMinutes();
-    if (minute < 10) minute = '0' + minute;
-    let second = today.getSeconds();
-    if (second < 10) second = '0' + second;
-    let millisecond = today.getMilliseconds();
-    if (millisecond < 10) millisecond = '00' + millisecond;
-    if (millisecond < 100) millisecond = '0' + millisecond;
-
-    let date = year.toString() + month.toString() + day.toString();
-    let time = hour.toString() + minute.toString() + second.toString() + millisecond.toString();
-
-    let semifinal = date + time;
-    let finall = Number(semifinal);
-    return finall;
-}
-
-
-
-/*  RANDOM  UPPERCASE AND LOWERCASE LETTERS and NUMBERS IN LENGHT YOU DECIDE  */
-
-//generate random characters , in length you decide
-export function iRandom_charactersAll(cA_length) {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
-    for (let i = 0; i < cA_length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  color: {
+    hex: () => {
+      const hexVal = '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
+      return hexVal
+    },
+    rgba: () => {
+      const o = Math.round
+      const r = Math.random
+      const s = 255
+      return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(2) + ')'
+    },
+    rgb: () => {
+      const o = Math.round
+      const r = Math.random
+      const s = 255
+      return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')'
+    },
+    hsl: () => {
+      const rRound = Math.round
+      const rRandom = Math.random
+      const myhue = 360
+      const mysaturnation = 100
+      const mylightness = 100
+      return 'hsl(' + rRound(rRandom() * myhue) + ', ' + rRound(rRandom() * mysaturnation) + '%' + ', ' + rRound(rRandom() * mylightness) + '%' + ')'
+    },
+    hwb: () => {
+      const rRound = Math.round
+      const rRandom = Math.random
+      const myhue = 360
+      const mywhiteness = 100
+      const myblackness = 100
+      return 'hwb(' + rRound(rRandom() * myhue) + ', ' + rRound(rRandom() * mywhiteness) + '%' + ', ' + rRound(rRandom() * myblackness) + '%' + ')'
+    },
+    cmyk: () => {
+      var rRound = Math.round
+      var rRandom = Math.random
+      var mycyan = 100
+      var mymagenta = 100
+      var myyellow = 100
+      var myblack = 100
+      const cyanShort = rRound(rRandom() * mycyan) + '%'
+      const magentaShort = rRound(rRandom() * mymagenta) + '%'
+      const yellowShort = rRound(rRandom() * myyellow) + '%'
+      const blackShort = rRound(rRandom() * myblack) + '%'
+      return 'cmyk(' + cyanShort + ', ' + magentaShort + ', ' + yellowShort + ', ' + blackShort + ')'
+    },
+    cmy: () => {
+      var rRound = Math.round
+      var rRandom = Math.random
+      var mycyan = 100
+      var mymagenta = 100
+      var myyellow = 100
+      const cyanShort = rRound(rRandom() * mycyan) + '%'
+      const magentaShort = rRound(rRandom() * mymagenta) + '%'
+      const yellowShort = rRound(rRandom() * myyellow) + '%'
+      return 'cmy(' + cyanShort + ', ' + magentaShort + ', ' + yellowShort + ')'
     }
-    return result;
-}
 
-//generate random numbers , in lenght you decide
-export function iRandom_charactersNums(cN_length) {
-    let result = '';
-    let characters = '0123456789';
-    let charactersLength = characters.length;
-    for (let i = 0; i < cN_length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  },
+  choice: {
+    letterFrom: (myVariable) => {
+      const length = 1
+      const myLength = myVariable.length
+      for (let i = 0; i < length; i++) {
+        var myChoice = myVariable.charAt(Math.floor(Math.random() * myLength))
+      }
+      return myChoice
     }
-    return result;
-}
-
-//generate random uppercase letters , in lenght you decide
-export function iRandom_charactersUletters(cUl_length) {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let charactersLength = characters.length;
-    for (let i = 0; i < cUl_length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-//generate random lowercase letters , in lenght you decide
-export function iRandom_charactersLletters(cLl_length) {
-    let result = '';
-    let characters = 'abcdefghijklmnopqrstuvwxyz';
-    let charactersLength = characters.length;
-    for (let i = 0; i < cLl_length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-
-//generate random uppercase and lowercase letters , in lenght you decide
-export function iRandom_charactersULletters(cULl_length) {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let charactersLength = characters.length;
-    for (let i = 0; i < cULl_length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-
-
-/*  COLORS  */
-
-//random hex color
-export function iRandom_random_hex() {
-    let hexVal = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-    return hexVal;
-}
-
-//random rgba color
-export function iRandom_random_rgba() { //red green blue alpha
-    let o = Math.round,
-        r = Math.random,
-        s = 255;
-    return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(2) + ')';
-}
-
-//random rgb color
-export function iRandom_random_rgb() { //red green blue
-    let o = Math.round,
-        r = Math.random,
-        s = 255;
-    return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')';
-}
-
-//random hsl color
-export function iRandom_random_hsl() { //hue, saturnation, lightness
-    let rRound = Math.round,
-        rRandom = Math.random,
-        myhue = 360,
-        mysaturnation = 100,
-        mylightness = 100;
-    return 'hsl(' + rRound(rRandom() * myhue) + ', ' + rRound(rRandom() * mysaturnation) + '%' + ', ' + rRound(rRandom() * mylightness) + '%' + ')';
-}
-
-//random hwb color
-export function iRandom_hwb() { //hue , whiteness, blackness   //CSS4
-    let rRound = Math.round,
-        rRandom = Math.random,
-        myhue = 360,
-        mywhiteness = 100,
-        myblackness = 100;
-    return 'hwb(' + rRound(rRandom() * myhue) + ', ' + rRound(rRandom() * mywhiteness) + '%' + ', ' + rRound(rRandom() * myblackness) + '%' + ')';
-}
-
-//random cmyk color
-export function iRandom_cmyk() { //cyan, magenta, yellow, black   //CSS4
-    var rRound = Math.round,
-        rRandom = Math.random,
-        mycyan = 100,
-        mymagenta = 100,
-        myyellow = 100,
-        myblack = 100;
-    let cyanShort = rRound(rRandom() * mycyan) + '%';
-    let magentaShort = rRound(rRandom() * mymagenta) + '%';
-    let yellowShort = rRound(rRandom() * myyellow) + '%';
-    let blackShort = rRound(rRandom() * myblack) + '%';
-    return 'cmyk(' + cyanShort + ', ' + magentaShort + ', ' + yellowShort + ', ' + blackShort + ')';
-}
-
-//random cmy color //CSS4
-export function iRandom_cmy() {
-    var rRound = Math.round,
-        rRandom = Math.random,
-        mycyan = 100,
-        mymagenta = 100,
-        myyellow = 100;
-    let cyanShort = rRound(rRandom() * mycyan) + '%';
-    let magentaShort = rRound(rRandom() * mymagenta) + '%';
-    let yellowShort = rRound(rRandom() * myyellow) + '%';
-    return 'cmy(' + cyanShort + ', ' + magentaShort + ', ' + yellowShort + ')';
-}
-
-
-
-/* COLOR CONVERTING */
-
-//rgb to hex
-function RGBToHex(r,g,b) {
-  r = r.toString(16);
-  g = g.toString(16);
-  b = b.toString(16);
-
-  if (r.length == 1)
-    r = "0" + r;
-  if (g.length == 1)
-    g = "0" + g;
-  if (b.length == 1)
-    b = "0" + b;
-
-  return "#" + r + g + b;
-}
-
-//rgba to hexa
-function RGBAToHexA(r,g,b,a) {
-  r = r.toString(16);
-  g = g.toString(16);
-  b = b.toString(16);
-  a = Math.round(a * 255).toString(16);
-
-  if (r.length == 1)
-    r = "0" + r;
-  if (g.length == 1)
-    g = "0" + g;
-  if (b.length == 1)
-    b = "0" + b;
-  if (a.length == 1)
-    a = "0" + a;
-
-  return "#" + r + g + b + a;
-}
-
-//hex to rgb
-function hexToRGB(h) {
-  let r = 0, g = 0, b = 0;
-
-  // 3 digits
-  if (h.length == 4) {
-    r = "0x" + h[1] + h[1];
-    g = "0x" + h[2] + h[2];
-    b = "0x" + h[3] + h[3];
-
-  // 6 digits
-  } else if (h.length == 7) {
-    r = "0x" + h[1] + h[2];
-    g = "0x" + h[3] + h[4];
-    b = "0x" + h[5] + h[6];
   }
-  
-  return "rgb("+ +r + "," + +g + "," + +b + ")";
+
 }
 
-//hexa to rgba
-function hexAToRGBA(h) {
-  let r = 0, g = 0, b = 0, a = 1;
-
-  if (h.length == 5) {
-    r = "0x" + h[1] + h[1];
-    g = "0x" + h[2] + h[2];
-    b = "0x" + h[3] + h[3];
-    a = "0x" + h[4] + h[4];
-
-  } else if (h.length == 9) {
-    r = "0x" + h[1] + h[2];
-    g = "0x" + h[3] + h[4];
-    b = "0x" + h[5] + h[6];
-    a = "0x" + h[7] + h[8];
-  }
-  a = +(a / 255).toFixed(3);
-
-  return "rgba(" + +r + "," + +g + "," + +b + "," + a + ")";
-}
-
-
-
-/*  GENERATE RANDOM LETTER FROM DECIDED STRING  */
-export function iRandom_choice(myVariable) {
-    let length = 1;
-    let myLength = myVariable.length;
-    for (let i = 0; i < length; i++) {
-        myChoice = myVariable.charAt(Math.floor(Math.random() * myLength));
-    }
-    return myChoice;
-};
-
-
-
-// NUMBER COMBINATIONS
-
-//generate combinations with k numbers
-export function combinations_k(set, k) {
-    var i, j, combs, head, tailcombs;
-    if (k > set.length || k <= 0) {
-        return [];
-    }
-    if (k == set.length) {
-        return [set];
-    }
-    if (k == 1) {
-        combs = [];
-        for (i = 0; i < set.length; i++) {
-            combs.push([set[i]]);
-        }
-        return combs;
-    }
-    combs = [];
-    for (i = 0; i < set.length - k + 1; i++) {
-        head = set.slice(i, i + 1);
-        tailcombs = combinations_k(set.slice(i + 1), k - 1);
-        for (j = 0; j < tailcombs.length; j++) {
-            combs.push(head.concat(tailcombs[j]));
-        }
-    }
-    return combs;
-}
-
-//generate combinations with all possible numbers 
-export function combinations(set) {
-    var k, i, combs, k_combs;
-    combs = [];
-    for (k = 1; k <= set.length; k++) {
-        k_combs = combinations_k(set, k);
-        for (i = 0; i < k_combs.length; i++) {
-            combs.push(k_combs[i]);
-        }
-    }
-    return combs;
-}
-
-
-
-/*  STRING TO NUMBER  */
-export function String2Num(myString, level) {
-    let elo = "";
-    myString = myString.split("").reverse().join("")
-    for (let i = 1; i <= myString.length; i++) {
-        elo += myString.charCodeAt(myString.length - i) * (i + level);
-    }
-
-    return elo;
-}
-
-
-
-/* FIBONACCI SEQUENCE & NUMBERS */
-
-//returns an array of first n Fibonacci numbers
-export function fibonacciSeq(n) {
-    if (n === 1) {
-        return [0, 1];
+const iRange = {
+  intRange: (start, end) => {
+    if (start > end) {
+      // code
     } else {
-        let s = fibonacciSeq(n - 1);
-        s.push(s[s.length - 1] + s[s.length - 2]);
-        return s;
+      const iArr = []
+      for (let i = start; i <= end; i++) {
+        iArr.push(i)
+      }
+      return iArr
     }
+  }
 }
 
-//returns one Fibonacci number
-export function fibonacciNum(num) {
-    if (num <= 0) return 0;
-    if (num <= 1 && num <= 2) return 1;
-    return fibonacci(num - 1) + fibonacci(num - 2);
-}
-
-
-
-/* ARITHMETIC SEQUENCE & NUMBERS */
-
-//returns one number from arithmetic sequence
-export function ariNum(n, a, d) {
-    return /*a[n] =*/ a + d * (n - 1);
-}
-
-//returns arithmetic sequence
-export function ariSeq(n, a, d) {
-    let seq = [a, a + d];
-    for (let i = 3; i <= n; i++) {
-        seq.push(seq[seq.length - 1] + d);
+var iPercent = {
+  numORpercentOFmax: (numper, max) => {
+    if (typeof numper === 'string') {
+      numper = parseInt(numper, 10)
+      const myNum = (numper / 100) * max
+      return myNum
+    } else {
+      const myPercent = (numper / max) * 100 + ' %'
+      return myPercent
     }
-    return seq;
-}
-
-
-
-/* GEOMETRIC SEQUENCE & NUMBERS */
-
-//returns one number from geometric sequence
-export function geoNum(n, a, r) {
-    return /*a[n] =*/ a * Math.pow(r, (n - 1));
-}
-
-//returns geometric sequence
-export function geoSeq(n, a, r) {
-    let seq = [a, a * r];
-    for (let i = 3; i <= n; i++) {
-        seq.push(seq[seq.length - 1] * r);
+  },
+  numISpercentOFmax: (number, percent) => {
+    percent = parseInt(percent, 10)
+    var maxNum = number / (percent / 100)
+    return maxNum
+  },
+  num1OpPercent: (operation, num1, percent) => {
+    if (operation === 'plus') {
+      percent = parseInt(percent, 10)
+      var num2 = ((percent / 100) * num1) + num1
     }
-    return seq;
-}
-
-
-
-/* TRIANGULAR SEQUENCE & NUMBERS */
-
-//returns one number from triangular sequence
-export function triNum(n) {
-    return /*x[n]=*/ n * (n + 1) / 2;
-}
-
-//returns triangular sequence
-export function triSeq(n) {
-    let seq = [1, 3];
-    for (let i = 3; i <= n; i++) {
-        seq.push(i * (i + 1) / 2);;
+    if (operation === 'minus') {
+      percent = parseInt(percent, 10)
+      num2 = num1 - ((percent / 100) * num1)
     }
-    return seq;
+    return num2
+  },
+  num1After: (type, num1, percent) => {
+    var num2
+    if (type === 'reduction') {
+      percent = parseInt(percent, 10)
+      num2 = num1 / ((100 - percent) / 100)
+    }
+    if (type === 'increase') {
+      percent = parseInt(percent, 10)
+      num2 = num1 / ((100 + percent) / 100)
+    }
+    return num2
+  },
+  fraction: (num1, num2) => {
+    var percent
+    if (num1 < num2) {
+      percent = ((num1 / num2) * 100) + '%'
+    }
+    if (num1 > num2) {
+      percent = ((num1 / num2) * 100) + '%'
+    }
+    return percent
+  },
+  fromNum1TOnum2: (num1, num2) => {
+    var percent
+    if (num1 < num2) {
+      percent = (((num2 / num1) * 100) - 100) + '%'
+    }
+    if (num1 > num2) {
+      percent = (100 - ((num2 / num1) * 100)) + '%'
+    }
+    return percent
+  }
 }
 
+const iNumOf = {
+  date: () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    let month = today.getMonth() + 1
+    if (month < 10) month = '0' + month
+    let day = today.getDate()
+    if (day < 10) day = '0' + day
+    let hour = today.getHours()
+    if (hour < 10) hour = '0' + hour
+    let minute = today.getMinutes()
+    if (minute < 10) minute = '0' + minute
+    let second = today.getSeconds()
+    if (second < 10) second = '0' + second
+    let millisecond = today.getMilliseconds()
+    if (millisecond < 10) millisecond = '00' + millisecond
+    if (millisecond < 100) millisecond = '0' + millisecond
 
+    const date = year.toString() + month.toString() + day.toString()
+    const time = hour.toString() + minute.toString() + second.toString() + millisecond.toString()
 
-/* SUM SERIES */
-export function seriesSum(n) {
-    var sum = 0;
-    for (let i = 1; i <= n; i++)
-        sum += i * (i + 1) / 2;
-    return sum;
+    const semifinal = date + time
+    const finall = Number(semifinal)
+    return finall
+  }
 }
 
+const iConvert = {
+  color: {
+    rgb2Hex: (r, g, b) => {
+      r = r.toString(16)
+      g = g.toString(16)
+      b = b.toString(16)
 
+      if (r.length === 1) {
+        r = '0' + r
+      }
+      if (g.length === 1) {
+        g = '0' + g
+      }
+      if (b.length === 1) {
+        b = '0' + b
+      }
 
+      return '#' + r + g + b
+    },
+    rgba2Hex: (r, g, b, a) => {
+      r = r.toString(16)
+      g = g.toString(16)
+      b = b.toString(16)
+      a = Math.round(a * 255).toString(16)
 
+      if (r.length === 1) {
+        r = '0' + r
+      }
+      if (g.length === 1) {
+        g = '0' + g
+      }
+      if (b.length === 1) {
+        b = '0' + b
+      }
+      if (a.length === 1) {
+        a = '0' + a
+      }
 
+      return '#' + r + g + b + a
+    },
+    hex2Rgb: (h) => {
+      let r = 0
+      let g = 0
+      let b = 0
 
-export function squareNum(n) {
-	return Math.pow(n, 2);
+      // 3 digits
+      if (h.length === 4) {
+        r = '0x' + h[1] + h[1]
+        g = '0x' + h[2] + h[2]
+        b = '0x' + h[3] + h[3]
+
+        // 6 digits
+      } else if (h.length === 7) {
+        r = '0x' + h[1] + h[2]
+        g = '0x' + h[3] + h[4]
+        b = '0x' + h[5] + h[6]
+      }
+
+      return 'rgb(' + +r + ',' + +g + ',' + +b + ')'
+    },
+    hexa2Rgba: (h) => {
+      let r = 0
+      let g = 0
+      let b = 0
+      let a = 1
+
+      if (h.length === 5) {
+        r = '0x' + h[1] + h[1]
+        g = '0x' + h[2] + h[2]
+        b = '0x' + h[3] + h[3]
+        a = '0x' + h[4] + h[4]
+      } else if (h.length === 9) {
+        r = '0x' + h[1] + h[2]
+        g = '0x' + h[3] + h[4]
+        b = '0x' + h[5] + h[6]
+        a = '0x' + h[7] + h[8]
+      }
+      a = +(a / 255).toFixed(3)
+
+      return 'rgba(' + +r + ',' + +g + ',' + +b + ',' + a + ')'
+    }
+  },
+  string2Num: (myString, level) => {
+    let elo = ''
+    myString = myString.split('').reverse().join('')
+    for (let i = 1; i <= myString.length; i++) {
+      elo += myString.charCodeAt(myString.length - i) * (i + level)
+    }
+
+    return elo
+  },
+  int2Roman: (num) => {
+    if (typeof num !== 'number') { return false }
+
+    const digits = String(+num).split('')
+    const key = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM',
+      '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC',
+      '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+    let romanNum = ''
+    let i = 3
+    while (i--) { romanNum = (key[+digits.pop() + (i * 10)] || '') + romanNum }
+    return Array(+digits.join('') + 1).join('M') + romanNum
+  }
 }
 
-export function cubeNum(n) {
-	return Math.pow(n, 3);
+const iCombination = {
+  combinations_k: (set, k) => {
+    var i, j, combs, head, tailcombs
+    if (k > set.length || k <= 0) {
+      return []
+    }
+    if (k === set.length) {
+      return [set]
+    }
+    if (k === 1) {
+      combs = []
+      for (i = 0; i < set.length; i++) {
+        combs.push([set[i]])
+      }
+      return combs
+    }
+    combs = []
+    for (i = 0; i < set.length - k + 1; i++) {
+      head = set.slice(i, i + 1)
+      tailcombs = iCombination.combinations_k(set.slice(i + 1), k - 1)
+      for (j = 0; j < tailcombs.length; j++) {
+        combs.push(head.concat(tailcombs[j]))
+      }
+    }
+    return combs
+  },
+  combinations: (set) => {
+    var k, i, combs, kCombs
+    combs = []
+    for (k = 1; k <= set.length; k++) {
+      kCombs = iCombination.combinations_k(set, k)
+      for (i = 0; i < kCombs.length; i++) {
+        combs.push(kCombs[i])
+      }
+    }
+    return combs
+  }
 }
 
-export function squareSeq(n) {
-	let seq = [2];
-	for (let i =1; i<=n-1; i++) {
-		seq.push(Math.pow(seq.length+1, 2));
-	}
-	return seq;
+var iSequence = {
+  fibonacci: {
+    seq: (n) => {
+      if (n === 1) {
+        return [0, 1]
+      } else {
+        const s = iSequence.fibonacci.seq(n - 1)
+        s.push(s[s.length - 1] + s[s.length - 2])
+        return s
+      }
+    },
+    num: (num) => {
+      if (num <= 0) return 0
+      if (num <= 1 && num <= 2) return 1
+      return iSequence.fibonacci.num(num - 1) + iSequence.fibonacci.num(num - 2)
+    }
+  },
+  arithmetic: {
+    seq: (n, a, d) => {
+      const seq = [a, a + d]
+      for (let i = 3; i <= n; i++) {
+        seq.push(seq[seq.length - 1] + d)
+      }
+      return seq
+    },
+    num: (n, a, d) => {
+      return a + d * (n - 1)
+    }
+
+  },
+  geometric: {
+    seq: (n, a, r) => {
+      const seq = [a, a * r]
+      for (let i = 3; i <= n; i++) {
+        seq.push(seq[seq.length - 1] * r)
+      }
+      return seq
+    },
+    num: (n, a, r) => {
+      return a * Math.pow(r, (n - 1))
+    }
+  },
+  triangular: {
+    seq: (n) => {
+      const seq = [1, 3]
+      for (let i = 3; i <= n; i++) {
+        seq.push(i * (i + 1) / 2)
+      }
+      return seq
+    },
+    num: (n) => {
+      return n * (n + 1) / 2
+    }
+  },
+  square: {
+    seq: (n) => {
+      const seq = [2]
+      for (let i = 1; i <= n - 1; i++) {
+        seq.push(Math.pow(seq.length + 1, 2))
+      }
+      return seq
+    },
+    num: (n) => {
+      return Math.pow(n, 2)
+    }
+  },
+  cube: {
+    seq: (n) => {
+      const seq = [2]
+      for (let i = 1; i <= n - 1; i++) {
+        seq.push(Math.pow(seq.length + 1, 3))
+      }
+      return seq
+    },
+    num: (n) => {
+      return Math.pow(n, 3)
+    }
+  },
+  stackChance: (max, stackBy) => {
+    var stacking = [max, max - iPercent.numORpercentOFmax(stackBy, max)];
+
+    for (let i = 1; i <= 1000; i++) {
+      stacking.push(stacking[i] - iPercent.numORpercentOFmax(stackBy, stacking[i]))
+      if (stacking[i] <= 1) break;
+    }
+    stacking.reverse();
+    return stacking
+  }
 }
 
-export function cubeSeq(n) {
-	let seq = [2];
-	for (let i =1; i<=n-1; i++) {
-		seq.push(Math.pow(seq.length+1, 3));
-	}
-	return seq;
+const iSeries = {
+  sum: (n) => {
+    var sum = 0
+    for (let i = 1; i <= n; i++) {
+      sum += i * (i + 1) / 2
+    }
+    return sum
+  }
 }
 
-
-
-/* TO-DO :  MAKE ALL SEQUENCES INTO ONE FUNCTION  */
-
-
-
-/* GET REQUEST */
-export function iGet(iURL, callback) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log('responseText:' + xmlhttp.responseText);
-            try {
-                var iData = JSON.parse(xmlhttp.responseText);
-            } catch(err) {
-                console.log(err.message + " in " + xmlhttp.responseText);
-                return;
-            }
-            callback(iData);
+const iRead = {
+  JSON: (iURL, callback) => {
+    var xmlhttp = new XMLHttpRequest()
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+        console.log('responseText:' + xmlhttp.responseText)
+        try {
+          var iData = JSON.parse(xmlhttp.responseText)
+        } catch (err) {
+          console.log(err.message + ' in ' + xmlhttp.responseText)
+          return
         }
-    };
-    xmlhttp.open("GET", iURL, true);
-    xmlhttp.send();
-}
-/*   EXAMPLE   */
-/*
-iGet('url/to/your/json/file.json', function(iData) {
-    document.getElementById("title").innerHTML = iData["title"];
-});
-*/
-
-
-/*  POST REQUEST  */
-export function iPost(iURL, callback, ReqHead, iSend) {
-    var xmlhttp = new XMLHttpRequest();
-	xmlhttp.setRequestHeader(ReqHead)
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log('responseText:' + xmlhttp.responseText);
-            try {
-                var iData = JSON.parse(xmlhttp.responseText);
-            } catch(err) {
-                console.log(err.message + " in " + xmlhttp.responseText);
-                return;
-            }
-            callback(iData);
-        }
-    };
-    xmlhttp.open("POST", iURL, true);
-    xmlhttp.send(iSend);
-}
-
-
-//example with post request - will come later
-
-
-/* WORKING WITH FILES */
-
-//make list of files
-function fromDir(startPath,filter){
-    var path = require('path'), fs=require('fs');
-    if (!fs.existsSync(startPath)){
-        console.log("no dir ",startPath);
-        return;
+        callback(iData)
+      }
     }
-    var files=fs.readdirSync(startPath);
-    for(var i=0;i<files.length;i++){
-        var filename=path.join(startPath,files[i]);
-        var stat = fs.lstatSync(filename);
-        if (stat.isDirectory()){
-            fromDir(filename,filter); //recurse
-        }
-        else if (filename.indexOf(filter)>=0) {
-            console.log(filename);
-        };
+    xmlhttp.open('GET', iURL, true)
+    xmlhttp.send()
+  },
+  fromDir: (startPath, filter) => {
+    var path = require('path')
+    var fs = require('fs')
+    if (!fs.existsSync(startPath)) {
+      console.log('no dir ', startPath)
+      return
+    }
+    var files = fs.readdirSync(startPath)
+    for (var i = 0; i < files.length; i++) {
+      var filename = path.join(startPath, files[i])
+      var stat = fs.lstatSync(filename)
+      if (stat.isDirectory()) {
+        iRead.fromDir(filename, filter) // recurse
+      } else if (filename.indexOf(filter) >= 0) {
+        console.log(filename)
+      };
     };
+  }
 }
-//  fromDir('C:\\Riot Games\\League of Legends\\Game\\DATA\\FINAL\\Champions\\','.en_US.wad.client');
+
+
