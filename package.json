@@ -1,0 +1,26 @@
+{
+  "name": "irandomjs",
+  "version": "1.0.0",
+  "description": "A collection of usable js snippets",
+  "main": "iRandom.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iVesha/IRandomJS.git"
+  },
+  "keywords": [
+    "i",
+    "random",
+    "js",
+    "snipets",
+    "collection"
+  ],
+  "author": "iVesha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iVesha/IRandomJS/issues"
+  },
+  "homepage": "https://github.com/iVesha/IRandomJS#readme"
+}
