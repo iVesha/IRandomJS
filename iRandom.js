@@ -407,24 +407,37 @@ var iSequence = {
     }
   },
   stackChance: (max, stackBy) => {
-    var stacking = [max, max - iPercent.numORpercentOFmax(stackBy, max)];
+    var stacking = [max, max - iPercent.numORpercentOFmax(stackBy, max)]
 
     for (let i = 1; i <= 1000; i++) {
       stacking.push(stacking[i] - iPercent.numORpercentOFmax(stackBy, stacking[i]))
-      if (stacking[i] <= 1) break;
+      if (stacking[i] <= 1) break
     }
-    stacking.reverse();
+    stacking.reverse()
     return stacking
   }
 }
 
 const iSeries = {
-  sum: (n) => {
-    var sum = 0
-    for (let i = 1; i <= n; i++) {
-      sum += i * (i + 1) / 2
-    }
-    return sum
+  sum: (...n) => {
+    return n.reduce((previous, current) => {
+      return previous + current
+    })
+  },
+  reduction: (...n) => {
+    return n.reduce((previous, current) => {
+      return previous - current
+    })
+  },
+  multiply: (...n) => {
+    return n.reduce((previous, current) => {
+      return previous * current
+    })
+  },
+  divide: (...n) => {
+    return n.reduce((previous, current) => {
+      return previous / current
+    })
   }
 }
 
