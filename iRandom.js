@@ -1,4 +1,4 @@
-const iRandom = {
+export const iRandom = {
   range: {
     intRange: (min, max) => {
       var randomInt = Math.floor(Math.random() * (max - min + 1)) + min
@@ -82,7 +82,9 @@ const iRandom = {
 
 }
 
-const iRange = {
+
+
+export const iRange = {
   intRange: (start, end) => {
     if (start > end) {
       // code
@@ -96,7 +98,9 @@ const iRange = {
   }
 }
 
-var iPercent = {
+
+
+export var iPercent = {
   numORpercentOFmax: (numper, max) => {
     if (typeof numper === 'string') {
       numper = parseInt(numper, 10)
@@ -157,7 +161,9 @@ var iPercent = {
   }
 }
 
-const iNumOf = {
+
+
+export const iNumOf = {
   date: () => {
     const today = new Date()
     const year = today.getFullYear()
@@ -184,7 +190,9 @@ const iNumOf = {
   }
 }
 
-const iConvert = {
+
+
+export const iConvert = {
   color: {
     rgb2Hex: (r, g, b) => {
       r = r.toString(16)
@@ -289,7 +297,9 @@ const iConvert = {
   }
 }
 
-const iCombination = {
+
+
+export const iCombination = {
   combinations_k: (set, k) => {
     var i, j, combs, head, tailcombs
     if (k > set.length || k <= 0) {
@@ -328,7 +338,9 @@ const iCombination = {
   }
 }
 
-var iSequence = {
+
+
+export var iSequence = {
   fibonacci: {
     seq: (n) => {
       if (n === 1) {
@@ -418,7 +430,9 @@ var iSequence = {
   }
 }
 
-const iSeries = {
+
+
+export const iSeries = {
   sum: (...n) => {
     return n.reduce((previous, current) => {
       return previous + current
@@ -441,7 +455,9 @@ const iSeries = {
   }
 }
 
-const iRead = {
+
+
+export const iRead = {
   JSON: (iURL, callback) => {
     var xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = function () {
