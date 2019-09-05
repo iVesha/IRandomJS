@@ -1,0 +1,60 @@
+{
+  "_from": "i-randomjs",
+  "_id": "i-randomjs@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-GWvjKFo45Ayr+cVxd7blGNJOcP/96P6eyG4as+vVp0/AIZZC01+2/axw7OrwKmC60t7Jxwlllr6kFEdSBIZVSQ==",
+  "_location": "/i-randomjs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "i-randomjs",
+    "name": "i-randomjs",
+    "escapedName": "i-randomjs",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/",
+    "/i-randomjs"
+  ],
+  "_resolved": "https://registry.npmjs.org/i-randomjs/-/i-randomjs-1.0.0.tgz",
+  "_shasum": "ad64281b68423e862fde8ebbe9790daad9bafcbf",
+  "_spec": "i-randomjs",
+  "_where": "C:\\Users\\Pejovici\\Desktop\\Tutorials\\jbjnj",
+  "author": {
+    "name": "iVesha"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "i-randomjs": "^1.0.0"
+  },
+  "deprecated": false,
+  "description": "JavaScript framework with usable functions as snippets",
+  "keywords": [
+    "javascript",
+    "framework",
+    "irandom",
+    "random",
+    "number",
+    "float",
+    "range",
+    "letter",
+    "date",
+    "color",
+    "convert",
+    "rgba",
+    "rgb",
+    "hex",
+    "hexa"
+  ],
+  "license": "ISC",
+  "main": "iRandom.js",
+  "name": "i-randomjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.2.2"
+}

@@ -1,4 +1,33 @@
-export const iRandom = {
+var extraFunc = {
+	getAlpNum: (istr) => {
+		var o = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ1234567890";
+		var p = "ɐ∀BqɔϽpᗡǝƎɟℲƃƃɥHıIɾſʞʞן˥ɯWuNoOdԀbὉɹᴚsSʇ⊥n∩ʌΛʍMxXʎʎzZ1234567890";
+		var nb;
+		for (let i = 0; i<= o.length-1; i++) {
+			if (istr == o[i]) {
+				nb = p[i];
+			}
+		}
+		return nb;		
+	},
+	getNumName: (inum) => {
+		var a = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+		var b = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+		var hb;
+		for (let i = 0; i <= b.length-1; i++) {
+			if (inum == b[i]) {
+				hb = a[i];
+			}
+		}
+		return hb;
+	}
+}
+
+
+
+
+
+exports.iRandom = {
   range: {
     intRange: (min, max) => {
       var randomInt = Math.floor(Math.random() * (max - min + 1)) + min
@@ -25,7 +54,7 @@ export const iRandom = {
       const o = Math.round
       const r = Math.random
       const s = 255
-      return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')'
+      return 'rgb(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')'
     },
     hsl: () => {
       const rRound = Math.round
@@ -84,23 +113,25 @@ export const iRandom = {
 
 
 
-export const iRange = {
+exports.iRange = {
   intRange: (start, end) => {
+	  const iArr = [];
     if (start > end) {
-      // code
+		for (let i = start; i >= end; i--) {
+			iArr.push(i);
+		}
     } else {
-      const iArr = []
       for (let i = start; i <= end; i++) {
         iArr.push(i)
       }
-      return iArr
     }
+	return iArr;
   }
 }
 
 
 
-export var iPercent = {
+var iPercent = {
   numORpercentOFmax: (numper, max) => {
     if (typeof numper === 'string') {
       numper = parseInt(numper, 10)
@@ -163,7 +194,7 @@ export var iPercent = {
 
 
 
-export const iNumOf = {
+exports.iNumOf = {
   date: () => {
     const today = new Date()
     const year = today.getFullYear()
@@ -185,14 +216,14 @@ export const iNumOf = {
     const time = hour.toString() + minute.toString() + second.toString() + millisecond.toString()
 
     const semifinal = date + time
-    const finall = Number(semifinal)
+    const finall = parseInt(semifinal, 10)
     return finall
   }
 }
 
 
 
-export const iConvert = {
+exports.iConvert = {
   color: {
     rgb2Hex: (r, g, b) => {
       r = r.toString(16)
@@ -280,12 +311,12 @@ export const iConvert = {
     for (let i = 1; i <= myString.length; i++) {
       elo += myString.charCodeAt(myString.length - i) * (i + level)
     }
-
+elo = parseInt(elo, 10);
     return elo
   },
   int2Roman: (num) => {
     if (typeof num !== 'number') { return false }
-
+	num = num.toFixed();
     const digits = String(+num).split('')
     const key = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM',
       '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC',
@@ -294,12 +325,29 @@ export const iConvert = {
     let i = 3
     while (i--) { romanNum = (key[+digits.pop() + (i * 10)] || '') + romanNum }
     return Array(+digits.join('') + 1).join('M') + romanNum
+  },
+  num2Num: (inum, level) => {
+	  inum = inum.toString();
+	  let arr = [];
+	  for (let i = 0; i <= inum.length-1; i++) {
+		  arr.push(extraFunc.getNumName(inum.charAt(i)));
+	  }
+	  let res = arr.join("");
+	  return exports.iConvert.string2Num(res, level);	  
+  },
+  var2ArrayOfChar: (ivar) => {
+	  ivar = ivar.split("");
+	  return ivar;
+  },
+  var2ArrayOfWords: (ivar) => {
+	  ivar = ivar.split(" ");
+	  return ivar;
   }
 }
 
 
 
-export const iCombination = {
+exports.iCombination = {
   combinations_k: (set, k) => {
     var i, j, combs, head, tailcombs
     if (k > set.length || k <= 0) {
@@ -318,7 +366,7 @@ export const iCombination = {
     combs = []
     for (i = 0; i < set.length - k + 1; i++) {
       head = set.slice(i, i + 1)
-      tailcombs = iCombination.combinations_k(set.slice(i + 1), k - 1)
+      tailcombs = exports.iCombination.combinations_k(set.slice(i + 1), k - 1)
       for (j = 0; j < tailcombs.length; j++) {
         combs.push(head.concat(tailcombs[j]))
       }
@@ -329,7 +377,7 @@ export const iCombination = {
     var k, i, combs, kCombs
     combs = []
     for (k = 1; k <= set.length; k++) {
-      kCombs = iCombination.combinations_k(set, k)
+      kCombs = exports.iCombination.combinations_k(set, k)
       for (i = 0; i < kCombs.length; i++) {
         combs.push(kCombs[i])
       }
@@ -340,7 +388,7 @@ export const iCombination = {
 
 
 
-export var iSequence = {
+var iSequence = {
   fibonacci: {
     seq: (n) => {
       if (n === 1) {
@@ -432,7 +480,7 @@ export var iSequence = {
 
 
 
-export const iSeries = {
+const iSeries = {
   sum: (...n) => {
     return n.reduce((previous, current) => {
       return previous + current
@@ -452,12 +500,17 @@ export const iSeries = {
     return n.reduce((previous, current) => {
       return previous / current
     })
+  },
+  modulo: (...n) => {
+	  return n.reduce((previous, current) => {
+		  return previous % current
+	  })
   }
 }
 
 
 
-export const iRead = {
+const iRead = {
   JSON: (iURL, callback) => {
     var xmlhttp = new XMLHttpRequest()
     xmlhttp.onreadystatechange = function () {
@@ -494,5 +547,59 @@ export const iRead = {
     };
   }
 }
+
+
+
+const iReverse = {
+	string: (istr) => {
+		return istr.split("").reverse().join("");
+	},
+	number: (inum) => {
+		inum = inum.toString();
+		inum = inum.split("").reverse().join("");
+		inum = parseInt(inum, 10);
+		return inum;
+	}
+}
+
+
+
+const iUpsideDown = {
+	
+	normal: (istr) => {
+		let arr = [];
+		for (let i = 0; i<= istr.length-1; i++) {
+			arr.push(extraFunc.getAlpNum(istr.charAt(i)));
+		}
+		let res = arr.join("");
+		return res;
+	}	
+}
+
+
+
+const iArray = {
+	unique: (uniq) => {
+		return uniq = [...new Set(uniq)];
+	}
+}
+
+
+
+const iMath = {
+	median: (arr) => {
+		const mid = Math.floor(arr.length / 2)
+  const nums = [...arr].sort((a, b) => a - b)
+  if (arr.length % 2 == 0) {
+    return nums[mid]
+	}
+	else {
+    return (nums[mid - 1] + nums[mid]) / 2
+  }
+	}
+}
+
+
+
 
 
