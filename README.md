@@ -518,5 +518,85 @@ console.log(iRandomJS.iSeries.modulus(modulus1, modulus2));
 
 
 
-## MORE SOON !
+## iRead.JSON
+
+reads .json file
+
+```javascript
+iRandomJS.iRead.JSON("https://raw.githubusercontent.com/LearnWebCode/json-example/master/pets-data.json", function(iData) {
+	console.log(iData.pets[0].name);
+});
+
+// Purrsloud
+```
+
+
+
+
+
+## iReverse.string
+
+reverses string
+
+```javascript
+iRandomJS.iReverse.string("iVesha");
+// ahseVi
+```
+
+
+
+## iReverse.number
+
+reverses number
+
+```javascript
+iRandomJS.iReverse.number(321);
+// 123
+```
+
+
+
+
+
+## iUpsideDown.normal
+
+makes variable upside down
+
+```javascript
+iRandomJS.iUpsideDown.normal("iRandomJS");
+// "ıᴚɐupoɯſS"
+```
+
+
+
+
+
+## iArray.unique
+
+removes duplicate strings/numbers, making array unique
+
+```javascript
+let array = ["iVesha", 22, false, false, 34, "iRandomJS", "javascript", "framework", 22, false];
+array = iRandomJS.iArray.unique(array);
+
+console.log(array);
+// [ 'iVesha', 22, false, 34, 'iRandomJS', 'javascript', 'framework' ]
+```
+
+
+
+
+
+## iMath.median
+
+finds median number of array
+
+```javascript
+iRandomJS.iMath.median([12, 24, 13, 50, 55, 40]);
+// 40
+```
+
+
+
+
 

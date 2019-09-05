@@ -510,12 +510,13 @@ exports.iSeries = {
 
 
 
-const iRead = {
+exports.iRead = {
   JSON: (iURL, callback) => {
-    var xmlhttp = new XMLHttpRequest()
+	  const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        console.log('responseText:' + xmlhttp.responseText)
+        /*console.log('responseText:' + xmlhttp.responseText)*/
         try {
           var iData = JSON.parse(xmlhttp.responseText)
         } catch (err) {
@@ -527,30 +528,12 @@ const iRead = {
     }
     xmlhttp.open('GET', iURL, true)
     xmlhttp.send()
-  },
-  fromDir: (startPath, filter) => {
-    var path = require('path')
-    var fs = require('fs')
-    if (!fs.existsSync(startPath)) {
-      console.log('no dir ', startPath)
-      return
-    }
-    var files = fs.readdirSync(startPath)
-    for (var i = 0; i < files.length; i++) {
-      var filename = path.join(startPath, files[i])
-      var stat = fs.lstatSync(filename)
-      if (stat.isDirectory()) {
-        iRead.fromDir(filename, filter) // recurse
-      } else if (filename.indexOf(filter) >= 0) {
-        console.log(filename)
-      };
-    };
   }
 }
 
 
 
-const iReverse = {
+exports.iReverse = {
 	string: (istr) => {
 		return istr.split("").reverse().join("");
 	},
@@ -564,7 +547,7 @@ const iReverse = {
 
 
 
-const iUpsideDown = {
+exports.iUpsideDown = {
 	
 	normal: (istr) => {
 		let arr = [];
@@ -578,7 +561,7 @@ const iUpsideDown = {
 
 
 
-const iArray = {
+exports.iArray = {
 	unique: (uniq) => {
 		return uniq = [...new Set(uniq)];
 	}
@@ -586,7 +569,7 @@ const iArray = {
 
 
 
-const iMath = {
+exports.iMath = {
 	median: (arr) => {
 		const mid = Math.floor(arr.length / 2)
   const nums = [...arr].sort((a, b) => a - b)
