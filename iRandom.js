@@ -388,21 +388,21 @@ exports.iCombination = {
 
 
 
-var iSequence = {
+exports.iSequence = {
   fibonacci: {
     seq: (n) => {
       if (n === 1) {
-        return [0, 1]
+        return [1, 1]
       } else {
-        const s = iSequence.fibonacci.seq(n - 1)
-        s.push(s[s.length - 1] + s[s.length - 2])
-        return s
+        const s = exports.iSequence.fibonacci.seq(n - 1)
+        s.push(s[s.length - 1] + s[s.length - 2]);
+        return s;
       }
     },
     num: (num) => {
       if (num <= 0) return 0
       if (num <= 1 && num <= 2) return 1
-      return iSequence.fibonacci.num(num - 1) + iSequence.fibonacci.num(num - 2)
+      return exports.iSequence.fibonacci.num(num - 1) + exports.iSequence.fibonacci.num(num - 2)
     }
   },
   arithmetic: {
@@ -480,28 +480,28 @@ var iSequence = {
 
 
 
-const iSeries = {
-  sum: (...n) => {
+exports.iSeries = {
+  addition: (...n) => {
     return n.reduce((previous, current) => {
       return previous + current
     })
   },
-  reduction: (...n) => {
+  subtraction: (...n) => {
     return n.reduce((previous, current) => {
       return previous - current
     })
   },
-  multiply: (...n) => {
+  multiplication: (...n) => {
     return n.reduce((previous, current) => {
       return previous * current
     })
   },
-  divide: (...n) => {
+  division: (...n) => {
     return n.reduce((previous, current) => {
       return previous / current
     })
   },
-  modulo: (...n) => {
+  modulus: (...n) => {
 	  return n.reduce((previous, current) => {
 		  return previous % current
 	  })

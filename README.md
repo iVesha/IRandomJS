@@ -1,7 +1,7 @@
 # iRandomJS
 
 ```javascript
-var iRandomJS = require("i-randomjs");
+const iRandomJS = require("i-randomjs");
 ```
 
 
@@ -306,5 +306,217 @@ console.log(combination);
 
 
 
-## SOON !
+## iSequence.fibonacci.seq
+
+generates an array of first N numbers, as Fibonacci sequence
+
+```javascript
+iRandomJS.iSequence.fibonacci.seq(5);
+// [ 1, 1, 2, 3, 5, 8 ]
+```
+
+**NOTICE IT WILL GIVE +1  IN THE MEANING OF LENGTH , SO IF YOU WRITE , LET'S SAY  7 , IT WILL BE FIRST 8 NUMBERS**
+
+
+
+## iSequence.fibonacci.num
+
+generates N-th number of Fibonacci sequence
+
+```javascript
+iRandom.iSequence.fibonacci.num(15);
+// 610
+```
+
+
+
+## iSequence.arithmetic.seq
+
+generates an array of arithmetic sequence
+
+```javascript
+iRandomJS.iSequence.arithmetic.seq(4, 1, 10);
+// [ 1, 11, 21, 31 ]
+```
+
+**First parameter is how many first numbers sequence will contain.
+Second parameter is with wich number sequence will start from.
+And third parameter is value of difference**
+
+
+
+## iSequence.arithmetic.num
+
+generates Nth number of sequence
+
+```javascript
+let seventh = iRandomJS.iSequence.arithmetic.num(7, 15, 10);
+console.log(seventh);
+// 75
+```
+
+
+
+## iSequence.geometric.seq
+
+generates an array of geometric sequence
+
+```javascript
+iRandomJS.iSequence.geometric.seq(3, 15, 1.25);
+// [ 15, 18.75, 23.4375 ]
+```
+
+**First parameter is how many first numbers sequence will contain.
+Second parameter number sequence start with.
+And third parameter is ratio.**
+
+
+
+## iSequence.geometric.num
+
+generates N-th number of sequence
+
+```javascript
+let fourthGS = iRandomJS.iSequence.geometric.num(4, 1, 2.5);
+console.log(fourthGS);
+// 15.625
+```
+
+
+
+## iSequence.triangular.seq
+
+generates an array of triangular sequence
+
+```javascript
+iRandomJS.Sequence.triangular.seq(7);
+// [ 1, 3, 6, 10, 15, 21, 28 ]
+```
+
+
+
+## iSequence.triangular.num
+
+generates N-th number of sequence
+
+```javascript
+iRandomJS.iSequence.triangular.num(50);
+// 1275
+```
+
+
+
+## iSequence.square.seq
+
+generates an array of square sequence
+
+```javascript
+let iSquare = iRandomJS.iSequence.square.seq(3);
+// [ 2, 4, 9 ]
+```
+
+
+
+## iSequence.square.num
+
+generates N-th number of sequence
+
+```javascript
+iRandomJS.iSequence.square.num(10);
+// 100
+```
+
+
+
+## iSequence.cube.seq
+
+gives an array of cube sequence
+
+```javascript
+let cube = iRandomJS.iSequence.cube.seq(4);
+console.log(cube);
+// [ 2, 8, 27, 64 ]
+```
+
+
+
+## iSequence.cube.num
+
+gives N-th numver of cube sequence
+
+ ```javascript
+let Cube9 = iRandomJS.iSequence.cube.num(9);
+console.log(Cube9);
+// 729
+ ```
+
+
+
+
+
+## iSeries.addition
+
+sums any amount of given numbers
+
+```javascript
+iRandomJS.iSeries.addition(1, 20, 74);
+// 95
+
+iRandomJS.iSeries.addition(30, 90, 180, 15, 45);
+// 360
+```
+
+
+
+## iSeries.subtraction
+
+subtract any amount of given numbers
+
+```javascript
+let a = iRandomJS.iSeries.subtraction(210, 40, 7);
+let b = iRandomJS.iSeries.subtraction(10, 32);
+console.log(iRandomJS.iSeries.subtraction(a, b));
+// 185
+```
+
+
+
+## iSeries.multiplication
+
+multiplies any amount of given numbers
+
+```javascript
+iRandomJS.iSeries.multiplication(12, 34);
+// 408
+```
+
+
+
+## iSeries.division
+
+divide any amount of given numbers
+
+```javascript
+iRandomJS.iSeries.division(30, 20, 10, 2);
+// 0.075
+```
+
+
+
+## iSeries.modulus
+
+modulus any amount of given numbers
+
+```javascript
+let modulus1 = iRandomJS.iSeries.modulus(10, 4);
+let modulus2 = iRandomJS.iSeries.modulus(13, 17);
+console.log(iRandomJS.iSeries.modulus(modulus1, modulus2));
+// 2
+```
+
+
+
+
+
+## MORE SOON !
 
